@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Management Dashboard</title>
+
+</head>
+
+<body>
+    <header>
+        <div class="headerr">
+            <h1>The Property Manager </h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <ul class="menu">
+                <li><a href="{% url 'dashboard' %}" class="active">Dashboard</a></li>
+                <li><a href="{% url 'addproperty' %}">Add Property</a></li>
+                <li><a href="{% url 'addtenant' %}">Add Tenant</a></li>
+                <li><a href="'{% url 'allotproperty' %}">Allot Property</a></li>
+                <li><a href="#">Rent</a></li>
+                <li><a href="#">Notice</a></li>
+                <li><a href="#">Profile Detail</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            {%block maincontent%}
+            <!-- Main content goes here -->
+
+            {%endblock%}
+        </main>
+    </div>
+
+
+    <footer>
+        <!-- Your footer content goes here -->
+    </footer>
+
+
+</body>
+
+</html>
+
+
+<style>
+    /* Reset default styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Body styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        /* Lighter shade than white */
+    }
+
+    /* Header styles */
+    header {
+        background-color: #fff;
+        padding: 20px;
+        /* Add additional styles for header as needed */
+    }
+
+    .headerr {
+        color: #28A745;
+
+    }
+
+    .menu {
+        list-style: none;
+    }
+
+    .menu li {
+        padding: 12px 0;
+    }
+
+    .menu a {
+        display: block;
+        text-decoration: none;
+        color: #333;
+        /* Dark color for text */
+        transition: 0.08s ease-in-out;
+    }
+
+    .menu a:hover,
+    .menu a.active {
+        color: #28A745;
+        /* Light tree green */
+        font-weight: bold;
+        border-left: 3px solid #28A745;
+        /* Highlight active link */
+    }
+
+    /* Container for sidebar and main content */
+    .container {
+        display: flex;
+        height: calc(100vh - 100px);
+        /* Adjust as needed considering header and footer height */
+    }
+
+    /* Sidebar styles */
+    .sidebar {
+        width: 250px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        transition: width 0.2s ease;
+    }
+
+    /* Hide sidebar initially */
+    .sidebar.collapsed {
+        width: 0;
+        overflow: hidden;
+    }
+
+    /* Main content area */
+    .main-content {
+        flex: 1;
+        padding: 20px;
+        transition: margin-left 0.3s ease;
+    }
+
+    /* Footer styles */
+    footer {
+        background-color: #fff;
+        padding: 20px;
+        /* Add additional styles for footer as needed */
+    }
+</style>
+
+<script>
+    document.getElementById('toggleSidebar').addEventListener('click', function () {
+        const sidebar = document.querySelector('.sidebar');
+        const mainContent = document.querySelector('.main-content');
+
+        sidebar.classList.toggle('collapsed');
+        mainContent.classList.toggle('collapsed');
+    });
+
+</script>
